@@ -3,7 +3,7 @@ export default [
     id: "0",
     image:
       "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_264,h_288,c_fill/e0vvulfbahjxjz6k4uwi",
-    name: "Meghana Foods",
+    name: "Shah Ghouse",
     rating: 4.4,
     time: "30-40",
     adress: "Residency Road, Ashok Nagar",
@@ -151,7 +151,7 @@ export default [
     id: "1",
     image:
       "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_264,h_288,c_fill/lvxyt7qdchtmzh8telc2",
-    name: "Beijing Bites",
+    name: "Shadabb Hotel",
     rating: 4.2,
     time: "30-40",
     adress: "Richmond Town, Ashok Nagar ",

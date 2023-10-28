@@ -14,6 +14,7 @@ import QuickFood from "../components/QuickFood";
 import { Ionicons } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import hotels from "../data/hotels";
+import MenuItem from "../components/MenuItem";
 export default function HomeScreen() {
   const data = hotels;
   return (
@@ -37,7 +38,7 @@ export default function HomeScreen() {
         />
         <AntDesign name="search1" size={24} color="black" />
       </View>
-      {/* image slider */}
+      {/* image slider */} 
       <Carousel />
       {/* Food item types */}
       <FoodTypes />
@@ -111,6 +112,9 @@ export default function HomeScreen() {
           <Text>Cusine Ratings</Text>
         </Pressable>
       </View>
+      {data.map((item, index)=>(
+        <MenuItem key={index} item={item}/>
+      ))}
     </ScrollView>
   );
 }
