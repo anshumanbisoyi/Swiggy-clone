@@ -1,4 +1,3 @@
-hotels.js;
 export default [
   {
     id: "0",
