@@ -10,12 +10,27 @@ import React from "react";
 import { AntDesign } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 const MenuItem = ({ item }) => {
   console.log(item);
+  const navigation = useNavigation();
   return (
     <View style={{ margin: 10 }}>
-      <Pressable style={{ flexDirection: "row", alignItems: "center" }}>
+      <Pressable
+        onPress={() => navigation.navigate("Menu", {
+             id: item.id,
+             name: item.name,
+             image: item.image,
+             rating: item.rating,
+             time: item.time,
+             adress: item.adress,
+             cost_for_two: item.cost_for_two,
+             cuisines: item.cuisines,
+             menu:item.menu,
+              })}
+        style={{ flexDirection: "row", alignItems: "center" }}
+      >
         <View>
           <ImageBackground
             imageStyle={{ borderRadius: 6 }}
@@ -46,7 +61,7 @@ const MenuItem = ({ item }) => {
             </Text>
           </View>
           <Text style={{ fontSize: 16, color: "grey", marginTop: 6 }}>
-            Chinese, Continental
+            {item.cuisines}
           </Text>
           <Text style={{ fontSize: 16, color: "grey", marginTop: 6 }}>
             {item.adress}
