@@ -112,7 +112,7 @@ const MenuComponent = ({ food }) => {
       >
         <View>
           <Text style={{ fontSize: 18, fontWeight: "600" }}>{food.name}</Text>
-          <Text>{food.price}</Text>
+          <Text>₹{food.price}</Text>
           <Text
             style={{
               marginTop: 5,

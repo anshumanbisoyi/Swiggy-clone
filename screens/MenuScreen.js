@@ -19,11 +19,15 @@ import Modal from "react-native-modal";
 import { useSelector } from "react-redux";
 
 const MenuScreen = () => {
-  const cart = useSelector((state => state.cart.cart));
-  console.log(cart);
+  const cart = useSelector((state) => state.cart.cart);
+  //total price using redux
+  const total = cart
+    .map((item) => item.price * item.quantity)
+    .reduce((curr, prev) => curr + prev, 0);
+  console.log(total);
   const route = useRoute();
   const navigation = useNavigation();
-//   console.log(route.params);
+  //   console.log(route.params);
   const [menu, setMenu] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
   useEffect(() => {
@@ -283,6 +287,57 @@ const MenuScreen = () => {
           </View>
         </View>
       </Modal>
+      {total == 0 ? null : (
+        <Pressable
+          style={{
+            backgroundColor: "#00A877",
+            width: "90%",
+            padding: 13,
+            marginLeft: "auto",
+            marginRight: "auto",
+            marginBottom: "30",
+            position: "absolute",
+            borderRadius: 10,
+            left: 20,
+            bottom: 15,
+          }}
+        >
+          <View
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            <View>
+              <Text
+                style={{ fontsize: 16, fontWeight: "bold", color: "white" }}
+              >
+                {cart.length} items | ₹{total}
+              </Text>
+              <Text
+                style={{
+                  fontSize: 14,
+                  fontWeight: "500",
+                  marginTop: 3,
+                  color: "white",
+                }}
+              >
+                Extra charges may apply!
+              </Text>
+            </View>
+            <Pressable
+              onPress={() =>
+                navigation.navigate("Cart", { name: route.params.name })
+              }
+            >
+              <Text style={{ fontSize: 18, fontWeight: "600", color: "white" }}>
+                View Cart
+              </Text>
+            </Pressable>
+          </View>
+        </Pressable>
+      )}
     </>
   );
 };
