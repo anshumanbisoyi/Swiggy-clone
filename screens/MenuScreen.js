@@ -1,4 +1,11 @@
-import { StyleSheet, Text, View, ScrollView, Pressable, Image } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  Pressable,
+  Image,
+} from "react-native";
 import React, { useEffect, useState } from "react";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
@@ -9,11 +16,14 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import FoodItem from "../components/FoodItem";
 import { SimpleLineIcons } from "@expo/vector-icons";
 import Modal from "react-native-modal";
+import { useSelector } from "react-redux";
 
 const MenuScreen = () => {
+  const cart = useSelector((state => state.cart.cart));
+  console.log(cart);
   const route = useRoute();
   const navigation = useNavigation();
-  console.log(route.params);
+//   console.log(route.params);
   const [menu, setMenu] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
   useEffect(() => {
@@ -258,9 +268,14 @@ const MenuScreen = () => {
               </Text>
             </View>
           ))}
-          <View style={{alignItems:"center", justifyContent:"center" }}>
+          <View style={{ alignItems: "center", justifyContent: "center" }}>
             <Image
-              style={{ width: 100, height: 50, resizeMode: "contain", marginTop:15}}
+              style={{
+                width: 100,
+                height: 50,
+                resizeMode: "contain",
+                marginTop: 15,
+              }}
               source={{
                 uri: "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_284/Logo_f5xzza",
               }}
